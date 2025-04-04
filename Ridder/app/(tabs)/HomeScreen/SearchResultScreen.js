@@ -9,9 +9,10 @@ import {
 } from "react-native";
 import { TabView, SceneMap } from "react-native-tab-view";
 import { FontAwesome, MaterialIcons, Ionicons } from "@expo/vector-icons"; // Import icons
+import { router } from "expo-router";
 
 // Reusable Result Component
-const ResultItem = ({ time, duration, distance, description }) => (
+const ResultItem = ({ time, duration, distance, description, emission }) => (
   <View style={styles.resultItem}>
     <Text style={styles.resultText}>
       {time} | {duration} | {distance} - {description}
@@ -19,6 +20,7 @@ const ResultItem = ({ time, duration, distance, description }) => (
     <View style={styles.iconContainer}>
       <Text style={styles.greenIcon}>🌱</Text>
       <Text style={styles.greenIcon}>🌱</Text>
+      <Text style={{ ...styles.resultText, ...{ marginLeft: 15 } }}>{emission}</Text>
     </View>
   </View>
 );
@@ -31,17 +33,21 @@ const TrainTab = () => (
       duration="1 hour"
       distance="50m away"
       description="from destination"
+      emission={"- 15% less emission + 60 GP"}
+
     />
     <ResultItem
       time="9 a.m"
       duration="1 hour"
       distance="50m away"
       description="from destination"
+      emission={"- 12% less emission + 50 GP"}
     />
     <ResultItem
       time="10 a.m"
       duration="30m then 45m via bus"
       description="via bus"
+      emission={"- 18% less emission + 65 GP"}
     />
   </ScrollView>
 );
@@ -53,17 +59,20 @@ const BusTab = () => (
       duration="1 hour 30m"
       distance="10m away from destination"
       description="from destination"
+      emission={"- 15% less emission + 60 GP"}
     />
     <ResultItem
       time="9 a.m"
       duration="1 hour 30m"
       distance="50m away from destination"
       description="from destination"
+      emission={"- 12% less emission + 50 GP"}
     />
     <ResultItem
       time="10 a.m"
       duration="30m then 45m via bus"
       description="via bus"
+      emission={"- 18% less emission + 65 GP"}
     />
   </ScrollView>
 );
@@ -72,7 +81,7 @@ const CarTab = () => (
   <ScrollView>
     <TouchableOpacity
       style={styles.card}
-      onPress={() => console.log("Card 1 pressed")}
+      onPress={() => router.push("/ProfileScreen")}
     >
       <Text style={styles.driverName}>#Mohammad Shayan</Text>
       <Text style={styles.time}>8 AM</Text>
@@ -81,26 +90,26 @@ const CarTab = () => (
       </Text>
       <View style={styles.iconContainer}>
         <Text style={styles.yellowIcon}>🌱</Text>
-        <Text style={styles.yellowIcon}>🌱</Text>
+        <Text style={{ ...styles.resultText, ...{ marginLeft: 15 } }}>- 4% less emission + 12 GP</Text>
       </View>
     </TouchableOpacity>
 
     <TouchableOpacity
       style={styles.card}
-      onPress={() => console.log("Card 2 pressed")}
+      onPress={() => router.push("/ProfileScreen")}
     >
       <Text style={styles.driverName}>#Melissa Puerto</Text>
       <Text style={styles.time}>9 AM</Text>
       <Text style={styles.otherInfo}>BMW M3, 1/8 bookings left, $20/day</Text>
       <View style={styles.iconContainer}>
         <Text style={styles.greenIcon}>🌱</Text>
-        <Text style={styles.greenIcon}>🌱</Text>
+        <Text style={{ ...styles.resultText, ...{ marginLeft: 15 } }}>- 5% less emission + 15 GP</Text>
       </View>
     </TouchableOpacity>
 
     <TouchableOpacity
       style={styles.card}
-      onPress={() => console.log("Card 3 pressed")}
+      onPress={() => router.push("/ProfileScreen")}
     >
       <Text style={styles.driverName}>#AbdulKadir Abubakar</Text>
       <Text style={styles.time}>8 AM</Text>
@@ -110,6 +119,7 @@ const CarTab = () => (
       <View style={styles.iconContainer}>
         <Text style={styles.redIcon}>🌱</Text>
         <Text style={styles.redIcon}>🌱</Text>
+        <Text style={{ ...styles.resultText, ...{ marginLeft: 15 } }}>- 10% less emission + 25 GP</Text>
       </View>
     </TouchableOpacity>
   </ScrollView>
@@ -122,7 +132,7 @@ const PeopleTab = () => (
       <Text style={styles.time}>8 AM</Text>
       <TouchableOpacity
         style={styles.connectButton}
-        onPress={() => console.log("Connect with Salim Lawal")}
+        onPress={() => router.push("/ExploreScreen")}
       >
         <Text style={styles.connectButtonText}>Connect</Text>
       </TouchableOpacity>
@@ -133,7 +143,7 @@ const PeopleTab = () => (
       <Text style={styles.time}>8 AM</Text>
       <TouchableOpacity
         style={styles.connectButton}
-        onPress={() => console.log("Connect with Hatef Shamshiri")}
+        onPress={() => router.push("/ExploreScreen")}
       >
         <Text style={styles.connectButtonText}>Connect</Text>
       </TouchableOpacity>
@@ -143,7 +153,7 @@ const PeopleTab = () => (
       <Text style={styles.name}>Early Birds Karachi to Islamabad</Text>
       <TouchableOpacity
         style={styles.connectButton}
-        onPress={() => console.log("Join Group")}
+        onPress={() => router.push("/ExploreScreen")}
       >
         <Text style={styles.connectButtonText}>Join Group</Text>
       </TouchableOpacity>
@@ -279,7 +289,11 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "#f9f9f9",
     borderRadius: 10,
-    marginBottom: 10,
+    marginBottom: 15,
+    elevation: 3,
+    width: "98%",
+    alignSelf: "center",
+
   },
   resultText: {
     fontSize: 16,
@@ -288,7 +302,8 @@ const styles = StyleSheet.create({
   iconContainer: {
     flexDirection: "row",
     justifyContent: "flex-start",
-    marginTop: 5,
+    marginTop: 10,
+    alignItems: "center",
   },
   greenIcon: {
     fontSize: 20,
@@ -309,22 +324,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#f9f9f9",
     borderRadius: 10,
     padding: 15,
-    marginBottom: 10,
+    marginBottom: 20,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 3, // For Android shadow
+    width: "98%",
+    alignSelf: "center",
   },
   driverName: {
     fontSize: 16,
     fontWeight: "bold",
     color: "#53B175",
-    marginBottom: 5,
-  },
-  time: {
-    fontSize: 14,
-    color: "#555",
     marginBottom: 5,
   },
   otherInfo: {
@@ -341,14 +353,14 @@ const styles = StyleSheet.create({
   time: {
     fontSize: 14,
     color: "#555",
-    marginBottom: 10,
   },
   connectButton: {
     backgroundColor: "#53B175",
     paddingVertical: 8,
     paddingHorizontal: 15,
     borderRadius: 5,
-    alignSelf: "flex-start",
+    alignSelf: "center",
+    marginTop: 10,
   },
   connectButtonText: {
     color: "#fff",
