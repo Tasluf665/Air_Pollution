@@ -6,7 +6,7 @@ export default function WelcomeScreen() {
 
     useEffect(() => {
         const timeoutId = setTimeout(() => {
-            router.replace("ShopScreen");
+            router.replace("HomeScreen");
         }, 1000);
 
         return () => clearTimeout(timeoutId);

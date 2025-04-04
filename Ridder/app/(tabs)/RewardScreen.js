@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function CartScreen() {
+export default function RewardScreen() {
     return (
         <View>
-            <Text>CartScreen</Text>
+            <Text>RewardScreen</Text>
         </View>
     )
 }

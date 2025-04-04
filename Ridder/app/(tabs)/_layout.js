@@ -1,4 +1,6 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import Entypo from '@expo/vector-icons/Entypo';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Tabs } from 'expo-router';
 import Colors from "../../constent/Colors";
 
@@ -9,9 +11,9 @@ export default function TabLayout() {
             tabBarInactiveTintColor: Colors.DarkGray,
         }}>
             <Tabs.Screen
-                name="ShopScreen"
+                name="HomeScreen"
                 options={{
-                    title: "Shop",
+                    title: "Home",
                     headerShown: false,
                     tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} />,
                 }}
@@ -25,19 +27,19 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen
-                name="CartScreen"
+                name="LeaderboardScreen"
                 options={{
-                    title: "Cart",
+                    title: "Leaderboard",
                     headerShown: false,
-                    tabBarIcon: ({ color }) => <FontAwesome size={28} name="shopping-cart" color={color} />,
+                    tabBarIcon: ({ color }) => <Entypo name="globe" size={28} color={color} />,
                 }}
             />
             <Tabs.Screen
-                name="FavouriteScreen"
+                name="RewardScreen"
                 options={{
-                    title: "Favorites",
+                    title: "Reward",
                     headerShown: false,
-                    tabBarIcon: ({ color }) => <FontAwesome size={28} name="star" color={color} />,
+                    tabBarIcon: ({ color }) => <MaterialIcons name="monetization-on" size={24} color={color} />,
                 }}
             />
             <Tabs.Screen
