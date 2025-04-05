@@ -20,7 +20,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.tasluf.Ridder"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,7 +32,16 @@
     "extra": {
       "router": {
         "origin": false
+      },
+      "eas": {
+        "projectId": "b9eec85b-523a-4029-8f28-c6299f65f39d"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/b9eec85b-523a-4029-8f28-c6299f65f39d"
     }
   },
   "web": {
