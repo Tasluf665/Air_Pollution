@@ -10,6 +10,7 @@ import { MaterialIcons, Ionicons, Feather } from "@expo/vector-icons";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
 
 import Colors from "../../constent/Colors";
+import { router } from "expo-router";
 
 export default function AccountScreen() {
 
@@ -23,13 +24,12 @@ export default function AccountScreen() {
 
             {/* Menu Options */}
             <View style={styles.menuSection}>
-                <MenuItem onPress={() => { }} icon={<MaterialIcons name="person-outline" size={24} color="black" />} title="My Details" />
-                <MenuItem onPress={() => { }} icon={<Ionicons name="location-outline" size={24} color="black" />} title="Address" />
-                <MenuItem onPress={() => { }} icon={<Feather name="credit-card" size={24} color="black" />} title="Payment Methods" />
-                <MenuItem onPress={() => { }} icon={<MaterialIcons name="local-offer" size={24} color="black" />} title="Promo Code" />
-                <MenuItem onPress={() => { }} icon={<Ionicons name="notifications-outline" size={24} color="black" />} title="Notifications" />
-                <MenuItem onPress={() => { }} icon={<Ionicons name="help-circle-outline" size={24} color="black" />} title="Help" />
-                <MenuItem onPress={() => { }} icon={<Ionicons name="information-circle-outline" size={24} color="black" />} title="About" />
+                <MenuItem onPress={() => { router.push("/IncompleteScreen") }} icon={<MaterialIcons name="person-outline" size={24} color="black" />} title="My Details" />
+                <MenuItem onPress={() => { router.push("/IncompleteScreen") }} icon={<Ionicons name="location-outline" size={24} color="black" />} title="Address" />
+                <MenuItem onPress={() => { router.push("/PaymentScreen") }} icon={<Feather name="credit-card" size={24} color="black" />} title="Payment Methods" />
+                <MenuItem onPress={() => { router.push("/NotificationScreen") }} icon={<Ionicons name="notifications-outline" size={24} color="black" />} title="Notifications" />
+                <MenuItem onPress={() => { router.push("/IncompleteScreen") }} icon={<Ionicons name="help-circle-outline" size={24} color="black" />} title="Help" />
+                <MenuItem onPress={() => { router.push("/IncompleteScreen") }} icon={<Ionicons name="information-circle-outline" size={24} color="black" />} title="About" />
             </View>
 
             {/* Logout Button */}

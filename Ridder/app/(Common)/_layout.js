@@ -13,6 +13,10 @@ export default () => {
                 name="CalendarScreen"
                 options={{ title: "Calendar" }}
             />
+            <Stack.Screen
+                name="IncompleteScreen"
+                options={{ headerShown: false }}
+            />
         </Stack>
     );
 };

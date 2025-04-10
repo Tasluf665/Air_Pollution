@@ -161,6 +161,43 @@ const PeopleTab = () => (
   </ScrollView>
 );
 
+const DeliveryTab = () => (
+  <ScrollView>
+    <View style={styles.card}>
+      <Text style={styles.name}>Victor wants to deliver 1kg item</Text>
+      <Text style={styles.time}>Price 300RS</Text>
+      <TouchableOpacity
+        style={styles.connectButton}
+        onPress={() => { }}
+      >
+        <Text style={styles.connectButtonText}>Pick Item</Text>
+      </TouchableOpacity>
+    </View>
+
+    <View style={styles.card}>
+      <Text style={styles.name}>Tasluf wants to deliver 2kg item</Text>
+      <Text style={styles.time}>Price 500RS</Text>
+      <TouchableOpacity
+        style={styles.connectButton}
+        onPress={() => { }}
+      >
+        <Text style={styles.connectButtonText}>Pick Item</Text>
+      </TouchableOpacity>
+    </View>
+
+    <View style={styles.card}>
+      <Text style={styles.name}>Samad wants to deliver 0.5kg item</Text>
+      <Text style={styles.time}>Price 100RS</Text>
+      <TouchableOpacity
+        style={styles.connectButton}
+        onPress={() => { }}
+      >
+        <Text style={styles.connectButtonText}>Pick Item</Text>
+      </TouchableOpacity>
+    </View>
+  </ScrollView>
+);
+
 // Main Screen with Tab View and Search Bar
 const SearchResultScreen = () => {
   const [source, setSource] = useState("Islamabad");
@@ -188,6 +225,11 @@ const SearchResultScreen = () => {
       title: "People",
       icon: <Ionicons name="people" size={24} color="#53B175" />,
     },
+    {
+      key: "delivery",
+      title: "Delivery",
+      icon: <MaterialIcons name="delivery-dining" size={26} color="#53B175" />
+    },
   ]);
 
   const renderScene = SceneMap({
@@ -195,6 +237,7 @@ const SearchResultScreen = () => {
     bus: BusTab,
     car: CarTab,
     people: PeopleTab,
+    delivery: DeliveryTab,
   });
 
   const renderTabBar = (props) => (
